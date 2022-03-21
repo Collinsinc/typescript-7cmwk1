@@ -7,10 +7,10 @@ appDiv.innerHTML = `<h1>TypeScript Starter</h1>`;
 
 
 // TODO 1: give this constant an appropriate type
-const FLOP_BAR = 50000000;
+const FLOP_BAR : number = 50000000;
 
 // TODO 2: give the gross parameter an appropriate type 
-function isFlop(gross) {
+function isFlop(gross:number) {
   return gross < FLOP_BAR;
 }
 
@@ -18,22 +18,23 @@ let movieReleaseYears = [1964, 1945, 2019];
 
 // calculate the total timespan from an array of years
 // TODO 3: give this function's parameter the correct type
-function totalTimespan(years) {
+function totalTimespan(years:number[]) {
   return years[years.length-1] - years[0]
 }
 
 // TODO 4: give this class the following construction parameters with types: title, year, and numStars and capture those parameters into properties with the same names
 
 class Movie {
-  title: string // Remove this
+ constructor(public title : string, public year: number , public numStars: number){}
 }
 
 // TODO 5: Find and fix all problems with the following  code by applying types - review the solution video for my implementation
 
-let userId = 5
-function checkoutMovie(movie: Movie, inventory, checkoutLog, userId: number[]) {
-  if(inventory.isInStock(movie.title)) {
-    inventory.reduceQuantity(movie.title, 1)
+let userId : number= 5
+function checkoutMovie(movie: Movie, inventory: Inventory, checkoutLog: CheckoutLog, userId: number) {
+
+  if(inventory.isinStock(movie.title)) {
+    inventory.reduceQuantity(movie.title)
     checkoutLog.add(movie.title, userId)
     return true;
   } else {
@@ -43,7 +44,7 @@ function checkoutMovie(movie: Movie, inventory, checkoutLog, userId: number[]) {
 
 class Inventory {
   isinStock(title: string) {
-    // implementation
+    return true;
   }
 
   reduceQuantity(title: string) {
@@ -52,7 +53,7 @@ class Inventory {
 }
 
 class CheckoutLog {
-  add(movieTitle: number, userId: string) {
+  add(movieTitle: string, userId: number) {
     // implementation
   }
 }
